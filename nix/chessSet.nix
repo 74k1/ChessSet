@@ -14,8 +14,10 @@ stdenvNoCC.mkDerivation rec {
   installPhase = ''
     runHook preInstall
 
-    mkdir -p $out/share/fonts/opentype
-    cp *.otf $out/share/fonts/opentype
+    #mkdir -p $out/share/fonts/opentype
+    #cp *.otf $out/share/fonts/opentype
+
+    install -D -m444 -t $out/share/fonts/opentype $src/*.otf
 
     runHook postInstall
   '';
